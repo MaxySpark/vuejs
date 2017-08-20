@@ -19,3 +19,5 @@
 `watch` is executed for change in data
 
 ### vue-5
+use `@` instead of `v-on:`
+use `:` instead of `v-bind:`
