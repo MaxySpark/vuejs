@@ -2,6 +2,7 @@
 
 ### vue-1
 `v-on` is Used to bind events
+`v-model` two way data binding
 
 ### vue-2
 `v-once` is Used to display the data once
@@ -21,3 +22,6 @@
 ### vue-5
 use `@` instead of `v-on:`
 use `:` instead of `v-bind:`
+
+### vue-6
+`:style` different dynamic style methods

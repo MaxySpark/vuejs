@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+    <script src="vue.js"></script>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            display: inline-block;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+        <div id="app">
+            <div class="box" @click="attachRed = ! attachRed" :class="divClasses"></div>
+            <div class="box" @click="attachGreen = ! attachGreen" :class="{ green: attachGreen }"></div>
+            <div class="box" @click="attachBlue = ! attachBlue" :class="{ blue: attachBlue }"></div>
+            <div class="box" :class="[color,{ blue: attachBlue }]"></div>
+            <hr>
+            <div class="box" :style="{ backgroundColor: color}"></div>
+            <div class="box" :style="myStyle"></div>
+            <div class="box" :style="[myStyle, {height: width +'px'}]"></div>
+            <input type="text" v-model="color">
+            <input type="text" v-model="width">
+        </div>  
+
+    <script src="index.js"></script>
+</body>
+</html>
