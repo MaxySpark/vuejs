@@ -40,3 +40,7 @@ use `:` instead of `v-bind:`
 ## vue-9
 
 `v-for="item in items` is for loop works with `(array,index)` and `(object,key,index)` and number  `(n in 10)`
+
+## Mini-Project-Monster-Slayer
+
+A simple one page aplication
