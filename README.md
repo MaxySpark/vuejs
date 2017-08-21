@@ -28,3 +28,7 @@ use `:` instead of `v-bind:`
 ## vue-6
 
 `:style` different dynamic style methods
+
+## vue-7
+
+`v-if="condition"` and `v-else` are used to show or hide element
