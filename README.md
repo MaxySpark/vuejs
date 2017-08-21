@@ -31,4 +31,12 @@ use `:` instead of `v-bind:`
 
 ## vue-7
 
-`v-if="condition"` and `v-else` are used to show or hide element
+`v-if="condition"` and `v-else` are used to attach or detach element
+
+## vue-8
+
+`v-show="condition"` is used to show or hide element
+
+## vue-9
+
+`v-for="item in items` is for loop works with `(array,index)` and `(object,key,index)` and number  `(n in 10)`
