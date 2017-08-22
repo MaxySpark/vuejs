@@ -43,4 +43,27 @@ use `:` instead of `v-bind:`
 
 ## Mini-Project-Monster-Slayer
 
-A simple one page aplication
+A simple one page aplication - `Monster Slayer`
+
+## vue-10
+
+Template
+```
+Vue.component('hello',{
+    template: '<h1>Hello Temp Component!</h1>'
+});
+
+// or
+
+var vm3 = new Vue({
+    template: '<h1>Hello!</h1>'
+});
+document.getElementById("app3").appendChild(vm3.$el);
+
+// display 
+
+vm.$mount('#app2');
+//or
+vm.$mount();
+
+```
