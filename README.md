@@ -68,7 +68,7 @@ vm.$mount();
 
 ```
 
-## vue-9
+## vue-11
 
 LifeCycle
 ```
