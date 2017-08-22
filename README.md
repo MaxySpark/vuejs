@@ -74,7 +74,7 @@ LifeCycle
 ```
 beforeCreate()
     |
-creted()
+created()
     |
 beforeMount()
     |
