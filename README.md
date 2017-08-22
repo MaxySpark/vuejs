@@ -86,3 +86,8 @@ beforeDestroy()
     |
 destroyed()
 ```
+
+## vue-cli
+
+`npm install -g vue-cli` learn about vue cli with `webpack-simple`
+`$ vue init webpack-simple dir_name`
