@@ -67,3 +67,22 @@ vm.$mount('#app2');
 vm.$mount();
 
 ```
+
+## vue-9
+
+LifeCycle
+```
+beforeCreate()
+    |
+creted()
+    |
+beforeMount()
+    |
+beforeUpdate()
+    |
+updated()
+    |
+beforeDestroy()
+    |
+destroyed()
+```
