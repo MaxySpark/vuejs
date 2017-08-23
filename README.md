@@ -90,4 +90,9 @@ destroyed()
 ## vue-cli
 
 `npm install -g vue-cli` learn about vue cli with `webpack-simple`
+
 `$ vue init webpack-simple dir_name`
+
+## vue-12
+
+`Vue.component({  });` Vue component
