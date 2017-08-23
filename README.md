@@ -93,6 +93,8 @@ destroyed()
 
 `$ vue init webpack-simple dir_name`
 
+Refactoring Components
+
 ## vue-12
 
 `Vue.component({  });` Vue component
