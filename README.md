@@ -98,3 +98,123 @@ Refactoring Components
 ## vue-12
 
 `Vue.component({  });` Vue component
+
+## vue-cli-2
+
+### Data Transfer Parent and Child
+
+
+In Component 
+
+```html
+<C :prop_name></C>
+```
+
+```javascript
+//in P
+<script>
+    export default {
+        props: {
+            prop_name: {
+                type: String,
+                required: true,
+                default: 'Name'
+            }
+        },
+        // access using this.prop_name
+    }
+</script>
+```
+
+### Data Transfer Child to Parent
+
+In Component 
+
+```html
+<!-- <C @nameOfTheEventToEmmit="doSomething"></C> -->
+<C @nameOfTheEventToEmmit="currentData = $event"></C>
+<!-- $event is passed data -->
+```
+
+In Parent 
+
+```html 
+//in P
+<template>
+    <button @click="someMethod">Event</button>
+</template>
+```
+```javascript
+<script>
+    export default {
+        props: ['props_name'],
+        methods: {
+            someMethod() {
+                this.props_name = 'something';
+                this.$emmit('nameOfTheEventToEmmit',this.props_name);
+            }
+        }
+        // this.prop_name is passed as argument and accessed as $event in Child
+    }
+</script>
+```
+
+### Data Transfer Child to Child
+
+```javascript
+//in main.js
+export const eventBus = new Vue({
+    methods: {
+        eventBusmethod(passed_data) {
+            this.$emmit('nameOfTheEventToEmmit',passed_data);
+        }
+    }
+});
+```
+
+First Child
+
+```html
+<!-- in First Child(From Where Change Will Be Made) -->
+<template>
+    <button @click="someMethod">Event</button>
+</template>
+```
+
+```javascript
+<script>
+    import { eventBus } from '../main';
+    
+    export default {
+        props: ['props_name'],
+        methods: {
+            someMethod() {
+                this.props_name = 'Something';
+                eventBus.eventBusMethod(this.props_name);
+                //this.props_name is passed as argument to eventBusMethod 
+            }
+        }
+    }
+</script>
+```
+
+Second Child
+
+
+```javascript
+//in Second Child(Where Change Will Effect)
+<script>
+    import { eventBus } from '../main';
+   
+    export default {
+        props: ['props_name'],
+        created() {
+            eventBus.$on('nameOfTheEventToEmmit',(data)=>{
+                //callback function
+                this.props_name = data;
+            });
+        }
+        }
+    }
+</script>
+```
