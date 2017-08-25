@@ -265,7 +265,7 @@ Child1    Child2
     export default {
         data: function() {
             return {
-                selectedComponent: "CHILD2.vue"
+                selectedComponent: CHILD2
             };
         },
         components : {
