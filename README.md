@@ -218,3 +218,103 @@ Second Child
     }
 </script>
 ```
+
+## vue-cli-3
+
+Display HTMl blocks from Parent in Child : uses `slot="nameoftheslot"` and `<slot name="nameoftheslot></slot>`
+
+```html
+<!-- In Parent -->
+<child>
+    <htmltag slot="slot_name">The Contentent</htmltag>
+    <htmltag2 slot="slot_name2">Second Content</htmltag2>
+</child>
+```
+
+```html
+<!-- In Child -->
+<slot name="slot_name"></slot>
+<slot name="default_slot_name">Default Text If Slot Name Not Passed</slot>
+<slot name="slot_name2"></slot>
+```
+
+#### Note: Styling Effects in Child
+#### Data {{ }} effects in Parent
+
+### Switching Between Compnent
+
+```
+     Parent
+ _______|______
+  |          |
+Child1    Child2
+```
+
+```html
+<!-- in parent   -->
+<component :is="selectedComponent">
+    <p>Default Content</p>
+</component>
+```
+
+```javascript
+<script>
+    import CHLID1 from 'CHILD1.vue';
+    import CHLID2 from 'CHILD2.vue';
+
+    export default {
+        data: function() {
+            return {
+                selectedComponent: "CHILD2.vue"
+            };
+        },
+        components : {
+            appChlid1 : CHILD1,
+            appChlid2 : CHILD2
+        }
+    }
+</script>
+```
+
+```html
+<!-- In Child1 -->
+<template>
+    <h1>Child 1</h1>
+</template>
+```
+
+```html
+<!-- In Child2 -->
+<template>
+    <h1>Child 2</h1>
+</template>
+```
+
+### To Keep Alive A Dynamic Component
+
+```html
+<!-- In Parent -->
+<keep-alive>
+    <component :is="selectedComponent">
+        <p>Default Content</p>
+    </component>
+</keep-alive>
+```
+
+```javascript
+// in Child
+<script>
+    export default {
+        destroyed() {
+          console.log('Destroyed');
+        },
+        deactivated() {
+          console.log('Deactivated');
+        },
+        activated() {
+          console.log('Activated');
+        }
+    }
+</script>
+
+```
