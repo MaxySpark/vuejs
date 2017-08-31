@@ -48,7 +48,7 @@ A simple one page aplication - `Monster Slayer`
 ## vue-10
 
 Template
-```
+```javascript
 Vue.component('hello',{
     template: '<h1>Hello Temp Component!</h1>'
 });
@@ -71,7 +71,7 @@ vm.$mount();
 ## vue-11
 
 LifeCycle
-```
+```javascript
 beforeCreate()
     |
 created()
@@ -131,8 +131,8 @@ In Component
 In Component 
 
 ```html
-<!-- <C @nameOfTheEventToEmmit="doSomething"></C> -->
-<C @nameOfTheEventToEmmit="currentData = $event"></C>
+<!-- <C @nameOfTheEventToEmit="doSomething"></C> -->
+<C @nameOfTheEventToEmit="currentData = $event"></C>
 <!-- $event is passed data -->
 ```
 
@@ -151,7 +151,7 @@ In Parent
         methods: {
             someMethod() {
                 this.props_name = 'something';
-                this.$emmit('nameOfTheEventToEmmit',this.props_name);
+                this.$emit('nameOfTheEventToEmit',this.props_name);
             }
         }
         // this.prop_name is passed as argument and accessed as $event in Child
@@ -166,7 +166,7 @@ In Parent
 export const eventBus = new Vue({
     methods: {
         eventBusmethod(passed_data) {
-            this.$emmit('nameOfTheEventToEmmit',passed_data);
+            this.$emit('nameOfTheEventToEmit',passed_data);
         }
     }
 });
@@ -209,7 +209,7 @@ Second Child
     export default {
         props: ['props_name'],
         created() {
-            eventBus.$on('nameOfTheEventToEmmit',(data)=>{
+            eventBus.$on('nameOfTheEventToEmit',(data)=>{
                 //callback function
                 this.props_name = data;
             });
@@ -318,3 +318,5 @@ Child1    Child2
 </script>
 
 ```
+
+## Mini-Project-Quote-Manager
