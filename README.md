@@ -371,3 +371,104 @@ export default{
 
 Same `Radio Button` or `Checkbox` --> Same `v-model` Name
 
+## vue-cli-5
+
+### Directives
+#### Built-In
+
+    `v-text`
+
+    `v-html`
+
+#### Custom
+
+Hooks
+
+```javascript
+    bind(el,binding,vnode)
+    inserted(el,binding,vnode)
+    update(el,binding,vnode,oldVnode)
+    componentUpdated(el,binding,vnode,oldVnode)
+    unbind(el,binding,vnode)    
+```
+
+
+Creating custom directives Globaly
+
+```javascript
+//in main.js file
+Vue.directive('highlight',{
+  bind(el,binding,vnode) {
+    el.style.backgroundColor = 'green';
+    el.style.backgroundColor = binding.value;
+  }
+});
+```
+
+Creating custom directives Locally
+
+```javascript
+<script>
+    export default {
+      directives: {
+        'local-directive': {
+          bind(el,binding,vnode) {
+              
+          }
+        }
+      }
+    }
+</script>
+```
+
+Modifiers ( in the following eg: `delayed` and `blink` )
+```html
+<p v-local-highlight:background.delayed.blink="{ mainColor: 'red', secondColor: 'blue', delay: 500 }">Color This</p>
+```
+
+```javascript
+//modifiers are saved in binding.modifiers array with key
+//following code check for modifiers blink and delay and changes the style in above html code
+<script>
+    export default {
+      directives: {
+        'local-highlight': {
+          bind(el,binding,vnode) {
+             	var delay = 0;
+				if(binding.modifiers['delayed']) {
+					delay = 3000;
+				}
+              	if(binding.modifiers['blink']) {
+					let mainColor = binding.value.mainColor;
+					let secondColor = binding.value.secondColor;
+					let currentColor = mainColor;
+
+					setTimeout(function() {
+						setInterval(()=>{
+							currentColor == secondColor ? currentColor = mainColor : currentColor = secondColor;
+							if(binding.arg == 'background') {
+							el.style.backgroundColor = currentColor;
+						} else {
+							el.style.color = currentColor;
+						}
+						},binding.value.delay);
+						
+					}, delay);
+
+              } else {
+
+				setTimeout(function() {
+					if(binding.arg == 'background') {
+						el.style.backgroundColor = binding.value.mainColor;
+					} else {
+						el.style.color = binding.value.mainColor;
+					}
+                }, delay);
+              
+              }
+          }
+        }
+      }
+    }
+</script>
+```
