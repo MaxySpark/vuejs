@@ -4,6 +4,7 @@
 
 `v-on` is Used to bind events
 `v-model` two way data binding
+`v-model.lazy` update after finish
 
 ## vue-2
 
@@ -320,3 +321,53 @@ Child1    Child2
 ```
 
 ## Mini-Project-Quote-Manager
+
+One page application - Quote Manger
+
+## vue-cli-4
+
+`v-model` --> 
+
+```javascript
+    :value="userData.email"
+    @input="userData.email = $event.target.value"
+```
+
+### Select-Option (Drop-Down)
+
+```html
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
+        <label for="priority">Priority</label>
+        <select
+            id="priority"
+            class="form-control"
+            v-model="selectedPriority">
+
+            <option 
+                v-for="priority in priorities" 
+                :key="priority" 
+                :selected="priority == 'Medium'">
+                {{ priority }}
+            </option>
+
+        </select>
+    </div>
+</div>
+```
+
+```javascript
+export default{
+    data: () => {
+        return {
+            selectedPriority: 'High',
+            priorities: ['High','Medium','Low']
+        };
+    }
+}
+
+// :selected is overwrited by v-model in <select> 
+```
+
+Same `Radio Button` or `Checkbox` --> Same `v-model` Name
+
