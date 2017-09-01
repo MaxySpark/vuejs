@@ -430,45 +430,45 @@ Modifiers ( in the following eg: `delayed` and `blink` )
 //modifiers are saved in binding.modifiers array with key
 //following code check for modifiers blink and delay and changes the style in above html code
 <script>
-    export default {
-      directives: {
-        'local-highlight': {
-          bind(el,binding,vnode) {
-			var delay = 0;
-			if(binding.modifiers['delayed']) {
-				delay = 3000;
-			}
-			if(binding.modifiers['blink']) {
-				let mainColor = binding.value.mainColor;
-				let secondColor = binding.value.secondColor;
-				let currentColor = mainColor;
+export default {
+	directives: {
+'local-highlight': {
+	bind(el,binding,vnode) {
+	var delay = 0;
+	if(binding.modifiers['delayed']) {
+		delay = 3000;
+	}
+	if(binding.modifiers['blink']) {
+		let mainColor = binding.value.mainColor;
+		let secondColor = binding.value.secondColor;
+		let currentColor = mainColor;
 
-				setTimeout(function() {
-				setInterval(()=>{
-					currentColor == secondColor ? currentColor = mainColor : currentColor = secondColor;
-					if(binding.arg == 'background') {
-						el.style.backgroundColor = currentColor;
-					} else {
-						el.style.color = currentColor;
-					}
-					},binding.value.delay);
-					
-				}, delay);
-
+		setTimeout(function() {
+		setInterval(()=>{
+			currentColor == secondColor ? currentColor = mainColor : currentColor = secondColor;
+			if(binding.arg == 'background') {
+				el.style.backgroundColor = currentColor;
 			} else {
+				el.style.color = currentColor;
+			}
+			},binding.value.delay);
+			
+		}, delay);
 
-			setTimeout(function() {
-				if(binding.arg == 'background') {
-					el.style.backgroundColor = binding.value.mainColor;
-				} else {
-					el.style.color = binding.value.mainColor;
-				}
-			}, delay);
-              
-              }
-          }
-        }
-      }
-    }
+	} else {
+
+	setTimeout(function() {
+	if(binding.arg == 'background') {
+		el.style.backgroundColor = binding.value.mainColor;
+	} else {
+		el.style.color = binding.value.mainColor;
+	}
+	}, delay);
+		
+	}
+	}
+	}
+}
+}
 </script>
 ```
